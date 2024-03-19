@@ -1,3 +1,4 @@
+import org.example.Game;
 import org.example.MainWindow;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -6,6 +7,10 @@ import org.junit.jupiter.api.Test;
 import javax.swing.*;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Класс - тестирование игры Змейка
+ */
 
 public class TestGameSnake {
     @Test
@@ -42,5 +47,13 @@ public class TestGameSnake {
     void GameClassCreationTest() {
         Game game = new Game();
         assertNotNull(game);
+    }
+    @Test
+    @DisplayName("тест-проверка добавления экземпляра класса Game в окно")
+    public void addGameToAWindowTest() {
+        MainWindow window=new MainWindow();
+        // Проверяем, что в окне есть дочерний элемент Game
+        assertEquals(1, window.getContentPane().getComponentCount());
+        assertEquals(Game.class, window.getContentPane().getComponent(0).getClass());
     }
 }
