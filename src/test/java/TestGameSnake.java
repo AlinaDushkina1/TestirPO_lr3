@@ -62,19 +62,24 @@ public class TestGameSnake {
         Game game = new Game();
 
         // Проверка значения константы SIZE
-        assertEquals("Размер поля должен быть 320", 320, game.SIZE);
+        assertEquals( 320, game.getSIZE());
 
         // Проверка значения константы DOT_SIZE
-        assertEquals("Размер ячейки змейки должен быть 16", 16, game.DOT_SIZE);
+        assertEquals( 16, game.getDOT_SIZE());
 
         // Проверка значения константы ALL_DOTS
-        assertEquals("Максимальное кол-во ячеек должно быть 400", 400, game.ALL_DOTS);
+        assertEquals(400, game.getALL_DOTS());
 
         // Проверка инициализации массивов x и y
-        assertTrue("Массив x должен быть инициализирован", game.x.length > 0);
-        assertTrue("Массив y должен быть инициализирован", game.y.length > 0);
+        assertTrue(game.getX()>0);
+        assertTrue(game.getY()>0);
 
         // Проверка значения поля inGame
-        assertTrue("Начальное состояние игры должно быть 'в игре'", game.inGame);
+        assertTrue(game.isInGame());
+        // Проверка значениq полей направлений
+        assertFalse(game.isLeft());
+        assertTrue(game.isRight());
+        assertFalse(game.isDown());
+        assertFalse(game.isUp());
     }
 }
