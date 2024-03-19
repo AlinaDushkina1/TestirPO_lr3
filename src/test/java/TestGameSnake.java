@@ -37,4 +37,10 @@ public class TestGameSnake {
         // Проверяем видимость окна
         assertEquals(true, window.getVisible());
     }
+    @Test
+    @DisplayName("тест на создание класса игры")
+    void GameClassCreationTest() {
+        Game game = new Game();
+        assertNotNull(game);
+    }
 }
