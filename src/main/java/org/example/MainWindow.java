@@ -13,6 +13,7 @@ public class MainWindow extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(width,height);
         setLocation(x,y);
+        add(new Game());
         setVisible(visible);
     }
 
