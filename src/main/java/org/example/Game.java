@@ -56,7 +56,9 @@ public class Game extends JPanel {
      * поле, отвечающее за статус - в игре мы или же уже нет
      */
     private boolean inGame = true;
-    public Game(){}
+    public Game(){
+        setBackground(Color.black);
+    }
     public int getSIZE() {
         return SIZE;
     }

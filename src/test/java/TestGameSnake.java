@@ -82,4 +82,15 @@ public class TestGameSnake {
         assertFalse(game.isDown());
         assertFalse(game.isUp());
     }
+
+    @Test
+    @DisplayName("Тест на проверку метода загрузки изображений")
+    public void testLoadImages() {
+        Game game = new Game();
+        game.loadImages();
+
+        assertNotNull("Изображение еды-яблока для змейки должно быть загружено", game.apple);
+        assertNotNull("Изображение ячейки змеи должно быть загружено", game.dot);
+    }
+
 }
