@@ -56,4 +56,25 @@ public class TestGameSnake {
         assertEquals(1, window.getContentPane().getComponentCount());
         assertEquals(Game.class, window.getContentPane().getComponent(0).getClass());
     }
+    @Test
+    @DisplayName("Тест на проверку игровых параметров")
+    public void gameParametersTest() {
+        Game game = new Game();
+
+        // Проверка значения константы SIZE
+        assertEquals("Размер поля должен быть 320", 320, game.SIZE);
+
+        // Проверка значения константы DOT_SIZE
+        assertEquals("Размер ячейки змейки должен быть 16", 16, game.DOT_SIZE);
+
+        // Проверка значения константы ALL_DOTS
+        assertEquals("Максимальное кол-во ячеек должно быть 400", 400, game.ALL_DOTS);
+
+        // Проверка инициализации массивов x и y
+        assertTrue("Массив x должен быть инициализирован", game.x.length > 0);
+        assertTrue("Массив y должен быть инициализирован", game.y.length > 0);
+
+        // Проверка значения поля inGame
+        assertTrue("Начальное состояние игры должно быть 'в игре'", game.inGame);
+    }
 }
