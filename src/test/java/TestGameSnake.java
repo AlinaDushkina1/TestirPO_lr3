@@ -85,7 +85,7 @@ public class TestGameSnake {
 
     @Test
     @DisplayName("Тест на проверку метода загрузки изображений")
-    public void testLoadImages() {
+    public void loadImagesTest() {
         Game game = new Game();
         game.loadImages();
 
@@ -93,4 +93,22 @@ public class TestGameSnake {
         assertNotNull(game.getDot());
     }
 
+    @Test
+    @DisplayName("Тест на проверку инициализации игры")
+    public void initGameTest() {
+        Game game = new Game();
+        game.initGame();
+
+        // Проверка значений переменных dots, x и y
+        assertEquals("Исходное количество точек должно быть 3", 3, game.dots);
+        for (int i = 0; i < game.dots; i++) {
+            assertEquals("Позиция x[" + i + "] должна быть вычислена верно", 48 - i * game.DOT_SIZE, game.x[i]);
+            assertEquals("Позиция y[" + i + "] должна быть равна 48", 48, game.y[i]);
+        }
+
+        // Проверка корректности настройки таймера
+        assertNotNull("Таймер должен быть инициализирован", game.timer);
+        assertTrue("Таймер должен быть запущен", game.timer.isRunning());
+        assertEquals("Частота таймера должна быть 250 миллисекунд", 250, game.timer.getDelay());
+    }
 }

@@ -59,6 +59,7 @@ public class Game extends JPanel {
     private boolean inGame = true;
     public Game(){
         setBackground(Color.black);
+        loadImages();
     }
     public void loadImages() {
         ImageIcon icon_apple=new ImageIcon("apple.png");
