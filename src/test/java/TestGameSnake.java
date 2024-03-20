@@ -197,4 +197,22 @@ public class TestGameSnake {
         // Проверяем, что после вызова метода коллизия была правильно обработана
         assertFalse(game.isInGame());
     }
+    @Test
+    @DisplayName("Тест на проверку метода checkCollisions, на столкновение змеи самой с собой")
+    public void collisionWithYourselfTest() {
+        Game game = new Game();
+
+        // Устанавливаем условие, которое приведет к выходу за пределы поля
+        game.setDots(5);
+        game.setX(0, 10);
+        game.setY(0, 10);
+        game.setX(5, 10);
+        game.setY(5, 10);
+
+        // Вызываем метод
+        game.checkCollisions();
+
+        // Проверяем, что после вызова метода коллизия была правильно обработана
+        assertFalse(game.isInGame());
+    }
 }
