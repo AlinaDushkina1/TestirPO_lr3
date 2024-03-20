@@ -195,7 +195,6 @@ public class TestGameSnake {
         game.checkCollisions();
 
         // Проверяем, что после вызова метода коллизия была правильно обработана
-        assertFalse(game.getInGame());
-    }
+        assertFalse(game.isInGame());
     }
 }

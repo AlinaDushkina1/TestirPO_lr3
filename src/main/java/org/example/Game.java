@@ -115,6 +115,12 @@ public class Game extends JPanel implements ActionListener {
             createApple();
         }
     }
+    public void checkCollisions(){
+        if(x[0]>SIZE){ inGame = false;}
+        if(x[0]<0){ inGame = false;}
+        if(y[0]>SIZE){ inGame = false;}
+        if(y[0]<0){ inGame = false;}
+    }
     /**
      * Переопределённый метод, который отрисовывает игровое поле
      * Перерисовывается только то что касается игры
