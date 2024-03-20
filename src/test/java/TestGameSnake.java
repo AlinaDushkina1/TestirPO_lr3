@@ -182,4 +182,20 @@ public class TestGameSnake {
         // Проверяем, что после вызова метода checkApple значение dots увеличилось на 1
         assertEquals(prevDots + 1, game.getDots());
     }
+
+    @Test
+    @DisplayName("Тест на проверку метода выхода за пределы игрового поля")
+    public void collisionsTest() {
+        Game game = new Game();
+
+        // Устанавливаем условие, которое приведет к выходу за пределы поля
+        game.setX(0, game.getSIZE()+1);
+
+        // Вызываем метод
+        game.checkCollisions();
+
+        // Проверяем, что после вызова метода коллизия была правильно обработана
+        assertFalse(game.getInGame());
+    }
+    }
 }

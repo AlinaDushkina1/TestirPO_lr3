@@ -104,6 +104,7 @@ public class Game extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(inGame){
+            checkApple();
             moveSnake();
         }
         repaint();
