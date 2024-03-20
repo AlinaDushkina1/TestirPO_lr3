@@ -122,11 +122,11 @@ public class TestGameSnake {
         int appleX = game.getAppleX();
         int appleY = game.getAppleY();
 
-        assertTrue("Координата X яблока должна быть неотрицательным числом", appleX >= 0);
-        assertTrue("Координата Y яблока должна быть неотрицательным числом", appleY >= 0);
-        assertTrue("Координата X яблока должна быть меньше 20 * DOT_SIZE", appleX < 20 * game.DOT_SIZE);
-        assertTrue("Координата Y яблока должна быть меньше 20 * DOT_SIZE", appleY < 20 * game.DOT_SIZE);
-        assertEquals("Координата X яблока должна быть кратна DOT_SIZE", 0, appleX % game.DOT_SIZE);
-        assertEquals("Координата Y яблока должна быть кратна DOT_SIZE", 0, appleY % game.DOT_SIZE);
+        assertTrue(appleX >= 0);//Координата X яблока должна быть неотрицательным числом
+        assertTrue(appleY >= 0);
+        assertTrue(appleX < 20 * game.getDOT_SIZE());//Координата X яблока должна быть меньше 20 * DOT_SIZE
+        assertTrue(appleY < 20 * game.getDOT_SIZE());
+        assertEquals(0, appleX % game.getDOT_SIZE());//"Координата X и Y яблока должна быть кратна DOT_SIZE"
+        assertEquals(0, appleY % game.getDOT_SIZE());
     }
 }

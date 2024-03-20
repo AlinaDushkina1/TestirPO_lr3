@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 public class Game extends JPanel implements ActionListener {
     /**
@@ -77,6 +78,15 @@ public class Game extends JPanel implements ActionListener {
         }
         timer = new Timer(250,this);//то с какой частотой будет тикать
         timer.start();
+        createApple();
+    }
+    public void createApple(){
+        appleX=new Random().nextInt(20)*DOT_SIZE;
+        appleY=new Random().nextInt(20)*DOT_SIZE;
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
 
     public int getSIZE() {
@@ -137,8 +147,4 @@ public class Game extends JPanel implements ActionListener {
 
     public Timer getTimer() {return timer;}
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
 }
