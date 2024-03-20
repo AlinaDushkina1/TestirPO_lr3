@@ -86,7 +86,17 @@ public class Game extends JPanel implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(inGame){
 
+        }
+        repaint();
+    }
+
+    public int[] getXmassiv() {
+        return x;
+    }
+    public int[] getYmassiv() {
+        return y;
     }
 
     public int getSIZE() {

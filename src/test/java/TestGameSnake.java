@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
 
+import java.awt.event.ActionEvent;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -128,5 +130,19 @@ public class TestGameSnake {
         assertTrue(appleY < 20 * game.getDOT_SIZE());
         assertEquals(0, appleX % game.getDOT_SIZE());//"Координата X и Y яблока должна быть кратна DOT_SIZE"
         assertEquals(0, appleY % game.getDOT_SIZE());
+    }
+
+    @Test
+    @DisplayName("Тест на проверку движения змейки")
+    public void moveTest() {
+        Game game = new Game();
+        game.initGame();
+        // Вызываем метод moveSnake
+        game.moveSnake();
+        // Проверяем, что элементы массива x сдвинулись правильно
+        assertArrayEquals(new int[]{48, 32, 16},game.getXmassiv());
+
+        // Проверяем, что элементы массива y сдвинулись правильно
+        assertArrayEquals(new int[]{48, 48, 48}, game.getYmassiv());
     }
 }
