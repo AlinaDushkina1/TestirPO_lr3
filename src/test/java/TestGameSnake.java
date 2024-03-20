@@ -137,10 +137,13 @@ public class TestGameSnake {
     public void moveTest() {
         Game game = new Game();
         game.initGame();
-        // Вызываем метод moveSnake
+        //начальные зн-я позиций ячеек
+        assertArrayEquals(new int[]{48, 32,16},game.getXmassiv());
+        assertArrayEquals(new int[]{48, 48, 48}, game.getYmassiv());
+        // Вызываем метод moveSnake, который сдвигает вправо
         game.moveSnake();
         // Проверяем, что элементы массива x сдвинулись правильно
-        assertArrayEquals(new int[]{48, 32, 16},game.getXmassiv());
+        assertArrayEquals(new int[]{64, 48, 32},game.getXmassiv());
 
         // Проверяем, что элементы массива y сдвинулись правильно
         assertArrayEquals(new int[]{48, 48, 48}, game.getYmassiv());

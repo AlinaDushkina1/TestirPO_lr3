@@ -92,12 +92,8 @@ public class Game extends JPanel implements ActionListener {
         repaint();
     }
 
-    public int[] getXmassiv() {
-        return x;
-    }
-    public int[] getYmassiv() {
-        return y;
-    }
+    public int[] getXmassiv() {return x;}
+    public int[] getYmassiv() {return y;}
 
     public int getSIZE() {
         return SIZE;
@@ -118,13 +114,8 @@ public class Game extends JPanel implements ActionListener {
         return y.length;
     }
 
-    public int getX(int i) {
-        return x[i];
-    }
-    public int getY(int i) {
-        return y[i];
-    }
-
+    public int getX(int i) {return x[i];}
+    public int getY(int i) {return y[i];}
     public boolean isLeft() {
         return left;
     }
@@ -156,5 +147,4 @@ public class Game extends JPanel implements ActionListener {
     public int getDots() {return dots;}
 
     public Timer getTimer() {return timer;}
-
 }
