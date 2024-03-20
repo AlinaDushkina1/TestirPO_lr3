@@ -116,6 +116,11 @@ public class Game extends JPanel implements ActionListener {
         }
     }
     public void checkCollisions(){
+        for(int i=dots;i>0;i--){
+            if(i>4 && x[0]==x[i] && y[0]==y[i]){
+                inGame=false;
+            }
+        }
         if(x[0]>SIZE){ inGame = false;}
         if(x[0]<0){ inGame = false;}
         if(y[0]>SIZE){ inGame = false;}
@@ -140,6 +145,7 @@ public class Game extends JPanel implements ActionListener {
     }
     public void setX(int i, int element){x[i]=element;}
     public void setY(int i, int element){y[i]=element;}
+    public void setDots(int dots) {this.dots = dots;}
     public int[] getXmassiv() {return x;}
     public int[] getYmassiv() {return y;}
 
@@ -158,32 +164,19 @@ public class Game extends JPanel implements ActionListener {
     public int getXlength() {
         return x.length;
     }
-    public int getYlength() {
-        return y.length;
-    }
+    public int getYlength() {return y.length;}
 
     public int getX(int i) {return x[i];}
     public int getY(int i) {return y[i];}
-    public boolean isLeft() {
-        return left;
-    }
+    public boolean isLeft() {return left;}
 
-    public boolean isRight() {
-        return right;
-    }
+    public boolean isRight() {return right;}
 
-    public boolean isUp() {
-        return up;
-    }
+    public boolean isUp() {return up;}
 
-    public boolean isDown() {
-        return down;
-    }
+    public boolean isDown() {return down;}
 
-    public boolean isInGame() {
-        return inGame;
-    }
-
+    public boolean isInGame() {return inGame;}
     public Image getDot() {return dot;}
 
     public Image getApple() {return apple;}
