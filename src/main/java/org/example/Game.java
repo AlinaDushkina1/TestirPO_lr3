@@ -108,6 +108,12 @@ public class Game extends JPanel implements ActionListener {
         }
         repaint();
     }
+    public void checkApple(){
+        if(x[0] == appleX && y[0]==appleY){
+            dots++;
+            createApple();
+        }
+    }
     /**
      * Переопределённый метод, который отрисовывает игровое поле
      * Перерисовывается только то что касается игры
@@ -125,7 +131,8 @@ public class Game extends JPanel implements ActionListener {
             }
         }
     }
-
+    public void setX(int i, int element){x[i]=element;}
+    public void setY(int i, int element){y[i]=element;}
     public int[] getXmassiv() {return x;}
     public int[] getYmassiv() {return y;}
 
