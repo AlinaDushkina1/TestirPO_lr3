@@ -89,8 +89,8 @@ public class TestGameSnake {
         Game game = new Game();
         game.loadImages();
 
-        assertNotNull("Изображение еды-яблока для змейки должно быть загружено", game.apple);
-        assertNotNull("Изображение ячейки змеи должно быть загружено", game.dot);
+        assertNotNull(game.getApple());
+        assertNotNull(game.getDot());
     }
 
 }

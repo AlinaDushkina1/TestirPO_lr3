@@ -16,6 +16,7 @@ public class Game extends JPanel {
      * максимальное кол-во помещающихся 16-ти пиксельных ячеек в поле размером 320
      */
     private final int ALL_DOTS = 400;
+
     /**
      * Image под игровую ячейку
      */
@@ -59,6 +60,12 @@ public class Game extends JPanel {
     public Game(){
         setBackground(Color.black);
     }
+    public void loadImages() {
+        ImageIcon icon_apple=new ImageIcon("apple.png");
+        apple = icon_apple.getImage();
+        ImageIcon icon_dot=new ImageIcon("dot.png");
+        dot = icon_dot.getImage();
+    }
     public int getSIZE() {
         return SIZE;
     }
@@ -100,4 +107,13 @@ public class Game extends JPanel {
     public boolean isInGame() {
         return inGame;
     }
+
+    public Image getDot() {
+        return dot;
+    }
+
+    public Image getApple() {
+        return apple;
+    }
+
 }
