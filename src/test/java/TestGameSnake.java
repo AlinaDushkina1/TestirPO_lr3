@@ -92,7 +92,8 @@ public class TestGameSnake {
         game.loadImages();
 
         assertNotNull(game.getApple());
-        assertNotNull(game.getDot());
+        assertNotNull(game.getHeadSnake());
+        assertNotNull(game.getSnake());
     }
 
     @Test

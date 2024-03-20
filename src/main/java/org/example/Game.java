@@ -23,7 +23,8 @@ public class Game extends JPanel implements ActionListener {
     /**
      * Image под игровую ячейку
      */
-    private Image dot;
+    private Image snake;
+    private Image headSnake;
     /**
      * Image под еду-яблоко
      */
@@ -66,10 +67,12 @@ public class Game extends JPanel implements ActionListener {
         initGame();
     }
     public void loadImages() {
-        ImageIcon icon_apple=new ImageIcon("apple.png");
+        ImageIcon icon_apple=new ImageIcon("apple1.png");
         apple = icon_apple.getImage();
-        ImageIcon icon_dot=new ImageIcon("dot.png");
-        dot = icon_dot.getImage();
+        ImageIcon icon_snake=new ImageIcon("snake.png");
+        headSnake = icon_snake.getImage();
+        ImageIcon icon_snake1=new ImageIcon("snake1.png");
+        snake = icon_snake1.getImage();
     }
     public void initGame() {
         dots = 3;
@@ -105,6 +108,7 @@ public class Game extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(inGame){
             checkApple();
+            checkCollisions();
             moveSnake();
         }
         repaint();
@@ -138,8 +142,9 @@ public class Game extends JPanel implements ActionListener {
         super.paintComponent(g);
         if(inGame){
             g.drawImage(apple,appleX,appleY,this);
-            for(int i = 0; i<dots;i++){
-                g.drawImage(dot,x[i],y[i],this);
+            g.drawImage(headSnake,x[0],y[0],this);
+            for(int i = 1; i<dots;i++){
+                g.drawImage(snake,x[i],y[i],this);
             }
         }
     }
@@ -177,7 +182,8 @@ public class Game extends JPanel implements ActionListener {
     public boolean isDown() {return down;}
 
     public boolean isInGame() {return inGame;}
-    public Image getDot() {return dot;}
+    public Image getSnake() {return snake;}
+    public Image getHeadSnake() {return headSnake;}
 
     public Image getApple() {return apple;}
 
