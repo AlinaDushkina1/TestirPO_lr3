@@ -137,15 +137,31 @@ public class TestGameSnake {
     public void moveTest() {
         Game game = new Game();
         game.initGame();
+        int[] massivAllX = game.getXmassiv();
+        int[] massivX = new int[game.getDots()];
+        int[] massivAllY = game.getYmassiv();
+        int[] massivY = new int[game.getDots()];
+        for(int i=0;i<game.getDots();i++){
+            massivX[i]=massivAllX[i];
+            massivY[i]=massivAllY[i];
+        }
         //начальные зн-я позиций ячеек
-        assertArrayEquals(new int[]{48, 32,16},game.getXmassiv());
-        assertArrayEquals(new int[]{48, 48, 48}, game.getYmassiv());
+        assertArrayEquals(new int[]{48, 32,16},massivX);
+        assertArrayEquals(new int[]{48, 48, 48}, massivY);
         // Вызываем метод moveSnake, который сдвигает вправо
         game.moveSnake();
+        int[] massivAllX1 = game.getXmassiv();
+        int[] massivX1 = new int[game.getDots()];
+        int[] massivAllY1 = game.getYmassiv();
+        int[] massivY1 = new int[game.getDots()];
+        for(int i=0;i<game.getDots();i++){
+            massivX1[i]=massivAllX1[i];
+            massivY1[i]=massivAllY1[i];
+        }
         // Проверяем, что элементы массива x сдвинулись правильно
-        assertArrayEquals(new int[]{64, 48, 32},game.getXmassiv());
+        assertArrayEquals(new int[]{64, 48, 32},massivX1);
 
         // Проверяем, что элементы массива y сдвинулись правильно
-        assertArrayEquals(new int[]{48, 48, 48}, game.getYmassiv());
+        assertArrayEquals(new int[]{48, 48, 48}, massivY1);
     }
 }

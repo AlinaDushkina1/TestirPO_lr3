@@ -84,6 +84,22 @@ public class Game extends JPanel implements ActionListener {
         appleX=new Random().nextInt(20)*DOT_SIZE;
         appleY=new Random().nextInt(20)*DOT_SIZE;
     }
+
+    /**
+     * Метод, отвечающий за логическую перерисовку точек
+     * Т.е. они будут сдвигаться массиве, заданном для хранения позиций ячеек
+     */
+    public void moveSnake(){
+        for(int i = dots; i>0; i--){
+            x[i]=x[i-1];
+            y[i]=y[i-1];
+        }
+        if(left){x[0]-=DOT_SIZE;}
+        if(right){x[0]+=DOT_SIZE;}
+        if(up){y[0]-=DOT_SIZE;}
+        if(down){y[0]+=DOT_SIZE;}
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(inGame){
