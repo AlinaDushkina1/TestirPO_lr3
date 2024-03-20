@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.Random;
 
 public class Game extends JPanel implements ActionListener {
@@ -65,7 +67,13 @@ public class Game extends JPanel implements ActionListener {
         setBackground(Color.black);
         loadImages();
         initGame();
+        addKeyListener(new FieldKeyListener());
+        setFocusable(true);
     }
+
+    /**
+     * Метод - загрузка изображений
+     */
     public void loadImages() {
         ImageIcon icon_apple=new ImageIcon("apple1.png");
         apple = icon_apple.getImage();
@@ -74,6 +82,12 @@ public class Game extends JPanel implements ActionListener {
         ImageIcon icon_snake1=new ImageIcon("snake1.png");
         snake = icon_snake1.getImage();
     }
+
+    /**
+     * Метод - инициализация игры
+     * Установление начальных позиций змейки
+     * Создание Яблока
+     */
     public void initGame() {
         dots = 3;
         for (int i = 0; i < dots; i++) {
@@ -84,6 +98,10 @@ public class Game extends JPanel implements ActionListener {
         timer.start();
         createApple();
     }
+
+    /**
+     * Метод - создания яблока на рандомной позиции
+     */
     public void createApple(){
         appleX=new Random().nextInt(20)*DOT_SIZE;
         appleY=new Random().nextInt(20)*DOT_SIZE;
@@ -104,6 +122,16 @@ public class Game extends JPanel implements ActionListener {
         if(down){y[0]+=DOT_SIZE;}
     }
 
+    /**
+     * Имплементированный метод, который вызывается каждый раз, когда тикает таймер
+     * Каждые 250 милисекунд
+     * Если в игре - проверяется на столкновение с рамками поля
+     * Также проверка на встречу с яблоком, если это так,
+     * то змея увелич и генерируется новое яблоко
+     * движение змеи
+     * А также перерисовка поля
+     * @param e событие, подлежащее обработке
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(inGame){
@@ -113,12 +141,20 @@ public class Game extends JPanel implements ActionListener {
         }
         repaint();
     }
+
+    /**
+     * Метод - проверка столкновения с яблоком
+     */
     public void checkApple(){
         if(x[0] == appleX && y[0]==appleY){
             dots++;
             createApple();
         }
     }
+    /**
+     * Метод - проверка столкновения с собой или
+     * выход за пределы иггрового поля
+     */
     public void checkCollisions(){
         for(int i=dots;i>0;i--){
             if(i>4 && x[0]==x[i] && y[0]==y[i]){
@@ -134,7 +170,7 @@ public class Game extends JPanel implements ActionListener {
      * Переопределённый метод, который отрисовывает игровое поле
      * Перерисовывается только то что касается игры
      * Если ещё в игре: Сначала рисуем яблоко, Затем периросывам змейку
-     *
+     * Иначе: игра заканчивается и появляется надпись - Game Over
      * @param g the <code>Graphics</code> object to protect
      */
     @Override
@@ -146,6 +182,11 @@ public class Game extends JPanel implements ActionListener {
             for(int i = 1; i<dots;i++){
                 g.drawImage(snake,x[i],y[i],this);
             }
+        }
+        else {
+            String str = "Game Over";
+            g.setColor(Color.white);
+            g.drawString(str,125,SIZE/2);
         }
     }
     public void setX(int i, int element){x[i]=element;}
@@ -194,4 +235,32 @@ public class Game extends JPanel implements ActionListener {
     public int getDots() {return dots;}
 
     public Timer getTimer() {return timer;}
+
+    class FieldKeyListener extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e){
+            super.keyPressed(e);
+            int key = e.getKeyCode();
+            if(key==KeyEvent.VK_LEFT && !right){
+                left= true;
+                up=false;
+                down = false;
+            }
+            if(key==KeyEvent.VK_RIGHT && !left){
+                right= true;
+                up=false;
+                down = false;
+            }
+            if(key==KeyEvent.VK_UP && !down){
+                right= false;
+                up=true;
+                left = false;
+            }
+            if(key==KeyEvent.VK_DOWN && !up){
+                left= false;
+                down=true;
+                right = false;
+            }
+        }
+    }
 }
