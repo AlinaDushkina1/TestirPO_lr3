@@ -164,4 +164,22 @@ public class TestGameSnake {
         // Проверяем, что элементы массива y сдвинулись правильно
         assertArrayEquals(new int[]{48, 48, 48}, massivY1);
     }
+    @Test
+    @DisplayName("Тест на проверку метода встречи змейкой яблока")
+    public void checkAppleTest() {
+        Game game = new Game();
+
+        // Устанавливаем значения x[0] и y[0] таким образом, чтобы они совпадали с appleX и appleY
+        game.setX(0, game.getAppleX());
+        game.setY(0, game.getAppleY());
+
+        // Сохраняем текущее значение dots
+        int prevDots = game.getDots();
+
+        // Вызываем метод checkApple
+        game.checkApple();
+
+        // Проверяем, что после вызова метода checkApple значение dots увеличилось на 1
+        assertEquals(prevDots + 1, game.getDots());
+    }
 }

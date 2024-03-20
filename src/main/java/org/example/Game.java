@@ -63,6 +63,7 @@ public class Game extends JPanel implements ActionListener {
     public Game(){
         setBackground(Color.black);
         loadImages();
+        initGame();
     }
     public void loadImages() {
         ImageIcon icon_apple=new ImageIcon("apple.png");
@@ -103,9 +104,26 @@ public class Game extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(inGame){
-
+            moveSnake();
         }
         repaint();
+    }
+    /**
+     * Переопределённый метод, который отрисовывает игровое поле
+     * Перерисовывается только то что касается игры
+     * Если ещё в игре: Сначала рисуем яблоко, Затем периросывам змейку
+     *
+     * @param g the <code>Graphics</code> object to protect
+     */
+    @Override
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        if(inGame){
+            g.drawImage(apple,appleX,appleY,this);
+            for(int i = 0; i<dots;i++){
+                g.drawImage(dot,x[i],y[i],this);
+            }
+        }
     }
 
     public int[] getXmassiv() {return x;}
