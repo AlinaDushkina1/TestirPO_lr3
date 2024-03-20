@@ -71,8 +71,8 @@ public class TestGameSnake {
         assertEquals(400, game.getALL_DOTS());
 
         // Проверка инициализации массивов x и y
-        assertTrue(game.getX()>0);
-        assertTrue(game.getY()>0);
+        assertTrue(game.getXlength()>0);
+        assertTrue(game.getYlength()>0);
 
         // Проверка значения поля inGame
         assertTrue(game.isInGame());
@@ -100,15 +100,15 @@ public class TestGameSnake {
         game.initGame();
 
         // Проверка значений переменных dots, x и y
-        assertEquals("Исходное количество точек должно быть 3", 3, game.dots);
-        for (int i = 0; i < game.dots; i++) {
-            assertEquals("Позиция x[" + i + "] должна быть вычислена верно", 48 - i * game.DOT_SIZE, game.x[i]);
-            assertEquals("Позиция y[" + i + "] должна быть равна 48", 48, game.y[i]);
+        assertEquals( 3, game.getDots());
+        for (int i = 0; i < game.getDots(); i++) {
+            assertEquals( 48 - i * game.getDOT_SIZE(), game.getX(i));
+            assertEquals(48, game.getY(i));
         }
 
         // Проверка корректности настройки таймера
-        assertNotNull("Таймер должен быть инициализирован", game.timer);
-        assertTrue("Таймер должен быть запущен", game.timer.isRunning());
-        assertEquals("Частота таймера должна быть 250 миллисекунд", 250, game.timer.getDelay());
+        assertNotNull(game.getTimer());//Таймер должен быть инициализирован
+        assertTrue(game.getTimer().isRunning());//Tаймер должен быть запущен
+        assertEquals( 250, game.getTimer().getDelay());//Частота таймера должна быть 250 миллисекунд
     }
 }

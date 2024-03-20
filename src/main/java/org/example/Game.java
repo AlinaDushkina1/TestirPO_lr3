@@ -2,8 +2,10 @@ package org.example;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Game extends JPanel {
+public class Game extends JPanel implements ActionListener {
     /**
      * размер поля
      */
@@ -67,6 +69,15 @@ public class Game extends JPanel {
         ImageIcon icon_dot=new ImageIcon("dot.png");
         dot = icon_dot.getImage();
     }
+    public void initGame() {
+        dots = 3;
+        for (int i = 0; i < dots; i++) {
+            x[i] = 48 - i*DOT_SIZE;//Т.е. начальная х позиция на числе 48, т к она кратна 16
+            y[i] = 48;
+        }
+        timer = new Timer(250,this);//то с какой частотой будет тикать
+        timer.start();
+    }
     public int getSIZE() {
         return SIZE;
     }
@@ -79,14 +90,18 @@ public class Game extends JPanel {
         return ALL_DOTS;
     }
 
-    @Override
-    public int getX() {
+    public int getXlength() {
         return x.length;
     }
-
-    @Override
-    public int getY() {
+    public int getYlength() {
         return y.length;
+    }
+
+    public int getX(int i) {
+        return x[i];
+    }
+    public int getY(int i) {
+        return y[i];
     }
 
     public boolean isLeft() {
@@ -109,12 +124,20 @@ public class Game extends JPanel {
         return inGame;
     }
 
-    public Image getDot() {
-        return dot;
-    }
+    public Image getDot() {return dot;}
 
-    public Image getApple() {
-        return apple;
-    }
+    public Image getApple() {return apple;}
 
+    public int getAppleX() {return appleX;}
+
+    public int getAppleY() {return appleY;}
+
+    public int getDots() {return dots;}
+
+    public Timer getTimer() {return timer;}
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
 }
