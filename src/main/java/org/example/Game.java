@@ -78,6 +78,7 @@ public class Game extends JPanel implements ActionListener {
         timer = new Timer(250,this);//то с какой частотой будет тикать
         timer.start();
     }
+
     public int getSIZE() {
         return SIZE;
     }

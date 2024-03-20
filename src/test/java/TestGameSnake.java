@@ -111,4 +111,22 @@ public class TestGameSnake {
         assertTrue(game.getTimer().isRunning());//Tаймер должен быть запущен
         assertEquals( 250, game.getTimer().getDelay());//Частота таймера должна быть 250 миллисекунд
     }
+
+    @Test
+    @DisplayName("Тест на проверку создания еды для змейки - яблоко")
+    public void appleCreateTest() {
+        Game game = new Game();
+        game.createApple();
+
+        // Проверка координат яблока
+        int appleX = game.getAppleX();
+        int appleY = game.getAppleY();
+
+        assertTrue("Координата X яблока должна быть неотрицательным числом", appleX >= 0);
+        assertTrue("Координата Y яблока должна быть неотрицательным числом", appleY >= 0);
+        assertTrue("Координата X яблока должна быть меньше 20 * DOT_SIZE", appleX < 20 * game.DOT_SIZE);
+        assertTrue("Координата Y яблока должна быть меньше 20 * DOT_SIZE", appleY < 20 * game.DOT_SIZE);
+        assertEquals("Координата X яблока должна быть кратна DOT_SIZE", 0, appleX % game.DOT_SIZE);
+        assertEquals("Координата Y яблока должна быть кратна DOT_SIZE", 0, appleY % game.DOT_SIZE);
+    }
 }
